@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<cabeça>
+    <meta charset="UTF-8">
+    <meta nome="viewport" conteúdo="largura=largura do dispositivo, escala inicial=1,0">
+    <título>Compartimento de Localização</título>
+    <roteiro src="https://cdn.tailwindcss.com"></roteiro>
+    <estilo>
+ .pulso-animação {
+ animação: pulso 2 s infinito;
+        }
+ @keyframes pulso {
+ 0% {transformar: escala(1); }
+ 50% {transformar: escala(1,05); }
+ 100% {transformar: escala(1); }
+        }
+    </estilo>
+</cabeça>
+<corpo classe="bg-cinza-100 min-h-screen flex items-center justify-center p-4">
+    <div classe="max-w-md w-full bg-white arredondado-xl sombra-lg transbordamento-oculto">
+        <div classe="p-6">
+            <div classe="centro de texto mb-6">
+                <div classe="mx-auto w-16 h-16 bg-blue-100 itens flexíveis arredondados e completos - centro de justificação mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <caminho traço-linha="redondo" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <caminho traço-linha="redondo" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </div>
+                <h1 classe="text-2xl font-bold text-gray-800">Compartilhar Localização</h1>
+                <p classe="texto cinza-600 mt-2">Por favor, compartilhe sua localização para continuar</p>
+            </div>
+
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/360597a3-3182-4e48-abc5-f1f1ed5845c5.png" alt="Mapa ilustrativo mostrando pontos de localização em um mapa mundial com marcadores azuis" class="w-full h-auto rounded-lg mb-6" />
+
+            <div classe="bg-blue-50 arredondado-lg p-4 mb-6 texto-sm texto-azul-800">
+                <p classe="fonte-médio">Como seus dados são usados:</p>
+                <ul classe="list-disc list-inside mt-1">
+                    <li>Sua localização é usada apenas para mostrar no mapa</li>
+                    <li>Nenhum dado é armazenado permanente</li>
+                    <li>Você pode recusar ou revogar uma permissão para um momento qualificado</li>
+                </ul>
+            </div>
+
+            <div classe="flex flex-col space-y-3">
+                <botão ue="shareLocationBtn" classe="pulse-animation bg-blue-600 hover: bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <caminho traço-linha="redondo" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <caminho traço-linha="redondo" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+ Compartilhar Minha Localização
+                </botão>
+                <botão classe="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 px-4 rounded-lg transition duration-200">
+ Não Compartilhar
+                </botão>
+            </div>
+
+            <div ue="resultContainer" classe="mt-6 escondido">
+                <div classe="bg-cinza-50 p-4 arredondado-lg">
+                    <h2 classe="texto em negrito cinza-fonte-800 mb-2">Sua Localização:</h2>
+                    <p ue="detalhes de localização" classe="texto-sm texto-cinza-600"></p>
+                    <div ue="mapLink" classe="mt-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <roteiro>
+ documento.getElementById('shareLocationBtn').addEventListener('clique', função() {
+ se (navegador.geolocalização) {
+ navegador.geolocalização.getCurrentPosition(
+ função(posição) {
+ const latitude = posição.cordas.latitude;const latitude = posição.cordas.latitude;
+ const longitude = posição.cordas.longitude; const longitude = posição.cordas.longitude;
+                        
+ // Mostrar os dados de localização// Mostrar os dados de localização
+ documento.getElementById ('localizaçãoDetalhes').innerHTML = `documento.getElementById ('localizaçãoDetalhes').innerHTML = `
+ Latitude: ${latitude}<br>
+ Longitude: ${longitude}<br>
+ Precisão: ${posição Precisão: ${posição.cordas.precisão} metrôscordas.precisão} metrôs
+ `;
+                        
+ //Link criar para o Google Maps//Link criar para o Google Maps
+ documento.getElementById('mapLink').innerHTML = `documento.getElementById('mapLink').innerHTML = `
+ <a href="https://www.google.com/maps?q=${latitude},${longitude}" 
+ alvo="_em branco" "_em branco" 
+ classe="text-blue-600 hover:text-blue-800 text-sm font-medium">classe="text-blue-600 hover:text-blue-800 text-sm font-medium">
+ Ver não Google MapsVer não Google Maps
+ </a>/a>
+ `;
+                        
+ // Mostrar o contêiner de resultados// Mostrar o contêiner de resultados// Mostrar o contêiner de resultados// Mostrar o contêiner de resultados
+ documento.getElementById('resultadoContêiner').lista de aulas.remover('hidden');documento.getElementById('resultadoContêiner').lista de aulas.remover('hidden');documento.getElementById('resultadoContêiner').lista de aulas.remover('hidden');documento.getElementById('resultadoContêiner').lista de aulas.remover ('hidden');
+                        
+ //Aqui você pode adicionar côdigo para inviar esta informação para um servidor//Aqui você pode adicionar côdigo para inviar esta informação para um servidor//Aqui você pode adicionar côdigo para inviar esta informação para um informação para um informação para um informação para um informação para um informação para um informação para um informação para um um um informação para um um um informação para um um informação para um um informação para um um informação para um um informação para um um um informação para um um um informação para um um um um informação para um um informação para um informação para um informação para um um um informação para um um informação para um serviço para um um um servidor//Aqui um servidor//Aqui um servidor//Aqui um servidor///Aqui um poder adicionar para inviar uma informação esta informação para um servidor
+ // Exemplo: sendToServer(latitude, longitude);// Exemplo: sendToServer(latitude, longitude);// Exemplo: sendToServer(latitude, longitude);// Exemplo: sendToServer(latitude, longitude);//
+ },},},},
+ função(erro) {função(erro) {função(erro) {função(erro) {
+ alerta ('Erro ao obter localização: ' + erro.mensagem); alerta ('Erro ao obter localização: ' + erro.mensagem); alerta ('Erro ao obter localização: ' + erro.mensagem); alerta ('Erro ao obter localização: ' + erro.mensagem); alerta ('Erro ao obter localização: ' + erro.mensagem); alerta ('Erro ao obter localização: ' + erro.mensagem); alerta ('Erro ao obter localização: ' + erro.mensagem); alerta ('Erro ao obter localização: ' + erro.mensagem); alerta ('Erro ao obter localização: ' + erro.mensagem: ' + erro.mensagem);alerta ('Erro ao obter localização: ' + erro.mensagem);alerta ('Erro ao obter localização: ' + erro.mensagem);alerta ('Erro ao obter localização: ' + erro.mensagem);alerta ('Erro ao obter localização: ' + erro.mensagem);alerta ('Erro ao obter localização: ' + erro.mensagem);alerta ('Erro ao obter localização: ' + erro.mensagem);alerta ('Erro ao obter localização: ' + erro.mensagem);alerta ('Erro ao obter localização: ' + erro.mensagem);alerta ('Erro ao obter localização: ' + erro.mensagem);alerta ('Erro ao obter localização: ' + erro.mensagem);alerta ('Erro ao obter localização: ' + erro.mensagem);alerta ('Erro ao obter localização: ' + erro.mensagem);
+ },},},},
+                    {
+ habilitarHighAccuracy: verdadeiro,habilitarHighAccuracy: verdadeiro,habilitarHighAccuracy: verdadeiro,habilitarHighAccuracy: verdadeiro,
+ andamento limpo: 5.000, e lamento limitado: 5.000, emento limite: 5.000, emento limite: 5.000,
+ ida máxima: 0ida máxima: 0ida máxima: 0ida máxima: 0
+                    }
+ ););););
+ } fóruns {} fora fora fora fora fora fora fora fora fora fora fora fora {} fóruns {} fora fora fora fora fora fora fora {
+ alerta ("Geolocalização não é suportada por este navegador"); alerta ("Geolocalização não é suportada por este navegador"); alerta ("Geolocalização não é suportada por este navegador")
+            }
+ });});});});
+
+ //Função de exemplo para inviar para um servidor//Função de exemplo para inviar para um servidor//Função de exemplo para inviar para um servidor//Função de exemplo para inviar para um servidor
+ função inviar par o servidor (lat, lng) {função inviar par o servidor (lat, lng) {função inviar par o servidor (lat, lng) {função inviar par o servidor (lat, lng) {função inviar par o servidor (lat, lng) {função inviar par o servidor
+ //Aqui você implementaria o código para inviar para seu backend//Aqui você implementaria o código para inviar para seu backend//Aqui você implementaria o código para inviar para seu backend//Aqui você implementaria o código para inviar para seu backend//Aqui você implementaria o código para inviar para seu backend//Aqui você implementaria o código para inviar para seu backend//Aqui você implementaria o código para inviar para seu backend//Aqui você implementaria o código para inviar para seu backend/Aqui você implementaria o código para inviar para seu backend//Aqui você implementaria o código para inviar para seu backend//Aqui você implementaria o código para inviar para seu backend//Aqui você implementaria o código para inviar para seu backend//Aqui você implementaria o código para inviar para seu backend//Aqui você implementaria o código para inviar para seu backend//Aqui você implementaria o código para inviar para seu backend//Aqui você implementaria o código para inviar para seu backend
+ console.log('Enviando para o servidor:', {latitude: lat, longitude: lng });console.log('Enviando para o servidor:', {latitude: lat, longitude: lng });console.log('Enviando para o servidor:', {latitude: lat, longitude: lng });console.log('Enviando para o servidor:', {latitude: lat, longitude: lng });
+        }
+ </roteiro>/roteiro>/roteiro>/roteiro>
+</corpo>/corpo>/corpo>/corpo>
+</html>/html>/html>/html>
